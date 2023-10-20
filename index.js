@@ -59,7 +59,7 @@ app.post('/order', showMethodAndURL,(req, res) => { // post rota criada
         orderClient,
         nameClient,
         priceOrder,
-        statusOrder : "Em preparação"
+        statusOrder : "Pedido Realizado"
     }
 
     orders.push(order)
@@ -72,16 +72,14 @@ app.put('/order/:id', checkOrderId, showMethodAndURL,(req, res) => { // post rot
     const index = req.orderIndex
     const id = req.orderId
 
-    const {
-        orderClient, nameClient, priceOrder, statusOrder
-        } = req.body
+    const {orderClient, nameClient, priceOrder} = req.body
 
     const updadtedOrder = {
         id,
         orderClient,
         nameClient,
         priceOrder,
-        statusOrder
+        statusOrder: "Pedido em preparação"
     }
 
     orders[index] = updadtedOrder
@@ -110,8 +108,6 @@ app.patch('/order/:id', checkOrderId, showMethodAndURL, (req, res) => {
     console.log(StatusPedido)
     return res.json(StatusPedido)
 })
-
-
 
 
 
